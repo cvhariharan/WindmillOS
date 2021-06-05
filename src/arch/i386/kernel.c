@@ -1,11 +1,11 @@
 #include "drivers/vga.h"
+#include "lib/types.h"
 
-void clear_screen(char *);
 
 k_start() {
-    const char *str = "Windmill OS";
-
     vga_k_init();
     vga_k_clear_screen();
-    vga_k_print("Testing 123... Booting Windmill OS");
+    
+    vga_k_print_color("Windmill OS\n", VGA_GREEN);
+    vga_k_print("0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n");
 }
