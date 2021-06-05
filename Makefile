@@ -8,11 +8,12 @@ start.o: src/arch/i386/start.asm
 boot.o: src/arch/i386/boot.asm
 	nasm -f elf32 src/arch/i386/boot.asm -o build/boot.o
 
-kernel.o: src/arch/i386/kernel.c
+kernel.o: src/arch/i386/kernel.c src/arch/i386/drivers/vga.c
 	gcc -m32 -c src/arch/i386/kernel.c -o build/kernel.o -nostdlib
+	gcc -m32 -c src/arch/i386/drivers/vga.c -o build/vga.o -nostdlib
 
 kernel.bin: start.o boot.o kernel.o linker.ld
-	ld -m elf_i386 --nmagic --output=build/kernel.bin --script=linker.ld build/boot.o build/start.o build/kernel.o
+	ld -m elf_i386 --nmagic --output=build/kernel.bin --script=linker.ld build/boot.o build/start.o build/kernel.o build/vga.o
 
 windmill.iso: kernel.bin isofiles/boot/grub/grub.cfg
 	mkdir -p isofiles/boot/grub
