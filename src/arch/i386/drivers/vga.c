@@ -18,7 +18,7 @@ void vga_k_print(const char *str) {
         vga_buffer[i] = str[j];
 
         // x86 is little endian so the colors come afterwards. Eg 0x0248 -> 48 02
-        vga_buffer[i+1] = 0x02; // Green color font
+        vga_buffer[i+1] = 0x03; // Cyan color font
         i += 2;
         j++;
     }
