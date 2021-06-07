@@ -29,4 +29,4 @@ run: setup windmill.iso
 	qemu-system-x86_64 -cdrom windmill.iso
 
 clean:
-	rm -rf build/*
+	rm -rf build/* windmill.iso
