@@ -28,5 +28,8 @@ setup:
 run: setup windmill.iso
 	qemu-system-i386 -cdrom windmill.iso
 
+debug: setup windmill.iso
+	qemu-system-i386 -gdb tcp::26000 -S -cdrom windmill.iso
+
 clean:
 	rm -rf build/* windmill.iso
