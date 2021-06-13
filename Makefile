@@ -26,7 +26,7 @@ setup:
 	mkdir -p build
 
 run: setup windmill.iso
-	qemu-system-x86_64 -cdrom windmill.iso
+	qemu-system-i386 -cdrom windmill.iso
 
 clean:
 	rm -rf build/* windmill.iso
