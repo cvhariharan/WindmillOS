@@ -1,8 +1,11 @@
 #include "drivers/vga.h"
 #include "lib/types.h"
-
+#include "lib/gdt/gdt.h"
 
 k_start() {
+
+    init_gdt();
+
     vga_k_init();
     vga_k_clear_screen();
     
