@@ -1,10 +1,15 @@
 #include "drivers/vga.h"
 #include "lib/types.h"
 #include "lib/gdt/gdt.h"
+#include "lib/idt/idt.h"
 
 k_start() {
 
     init_gdt();
+    init_idt();
+
+    // asm volatile ("int $0x3");
+    // asm volatile ("int $0x4");
 
     vga_k_init();
     vga_k_clear_screen();
