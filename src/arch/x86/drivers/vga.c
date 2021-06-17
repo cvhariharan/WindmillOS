@@ -22,6 +22,11 @@ void vga_k_print(const char *str) {
     vga_k_print_color(str, VGA_CYAN);
 }
 
+void vga_decimal_print(int num) {
+    char str[2] = {'0' + num, '\0'};
+    vga_k_print(str);
+}
+
 void vga_k_print_color(const char *str, byte_t color) {
     if(vga_buffer == 0) {
         vga_k_init();

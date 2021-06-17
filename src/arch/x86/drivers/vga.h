@@ -34,6 +34,8 @@ void vga_k_print_color(const char *, byte_t);
 // vga_k_clear clears the vga display buffers by setting ' ' in all locations
 void vga_k_clear_screen();
 
+void vga_decimal_print(int);
+
 byte_t vga_get_char(byte_t, byte_t);
 
 void vga_set_char(byte_t, byte_t, byte_t, byte_t);
