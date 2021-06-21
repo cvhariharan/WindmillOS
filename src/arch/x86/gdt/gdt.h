@@ -1,4 +1,4 @@
-#include "../types.h"
+#include "../lib/types.h"
 
 #ifndef _GDT_
 #define _GDT_
