@@ -31,6 +31,5 @@ void isr_13() {
 void _keyboard_interrupt() {
     int scancode = inb(0x60);
     char a = get_key_from_scancode(scancode);
-    char s[] = {a, '\0'};
-    vga_k_print(s);
+    vga_putchar(a);
 }

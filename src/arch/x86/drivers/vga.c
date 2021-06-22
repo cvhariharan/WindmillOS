@@ -63,6 +63,12 @@ void vga_k_print_color(const char *str, byte_t color) {
     }
 }
 
+
+void vga_putchar(const char c) {
+    const char s[2] = {c, '\0'};
+    vga_k_print_color(s, VGA_GREEN);
+}
+
 void vga_k_clear_screen() {
     if(vga_buffer == 0) {
         vga_k_init();
