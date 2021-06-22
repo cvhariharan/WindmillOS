@@ -88,7 +88,9 @@ void vga_set_char(byte_t ch, byte_t x, byte_t y, byte_t color) {
     if(vga_buffer == 0) {
         vga_k_init();
     }
-    int index = (y * VGA_COLUMNS + x) * 2;                                 // 2 bytes for each character
+    
+    // 2 bytes for each character
+    int index = (y * VGA_COLUMNS + x) * 2;
     vga_buffer[index] = ch;
     vga_buffer[index+1] = color;
 }
