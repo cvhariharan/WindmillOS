@@ -25,7 +25,7 @@ kernel.bin: boot.o kernel.o linker.ld
 windmill.iso: kernel.bin isofiles/boot/grub/grub.cfg
 	mkdir -p isofiles/boot/grub
 	cp build/kernel.bin isofiles/boot/
-	grub-mkrescue -o windmill.iso isofiles
+	grub2-mkrescue -o windmill.iso isofiles
 
 build: windmill.iso
 
