@@ -1,8 +1,8 @@
-#include "isr.h"
-#include "../drivers/vga.h"
-#include "../userinput/keyboard.h"
-#include "../pic.h"
-#include "../lib/io.h"
+#include <interrupts/isr.h>
+#include <drivers/vga.h>
+#include <userinput/keyboard.h>
+#include <pic.h>
+#include <lib/io.h>
 
 void isr_handler(registers_t regs) {
     vga_k_print("Received interrupt: ");

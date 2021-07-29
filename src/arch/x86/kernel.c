@@ -1,8 +1,8 @@
-#include "drivers/vga.h"
-#include "lib/types.h"
-#include "gdt/gdt.h"
-#include "interrupts/idt.h"
-#include "pic.h"
+#include <drivers/vga.h>
+#include <lib/types.h>
+#include <gdt/gdt.h>
+#include <interrupts/idt.h>
+#include <pic.h>
 
 k_start() {
 

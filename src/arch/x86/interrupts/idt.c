@@ -1,4 +1,4 @@
-#include "idt.h"
+#include <interrupts/idt.h>
 
 idt_entry_t idt_entries[IDT_ENTRIES];
 idt_ptr_t idt_ptr;

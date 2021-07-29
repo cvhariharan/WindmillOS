@@ -1,5 +1,5 @@
-#include "pic.h"
-#include "lib/io.h"
+#include <pic.h>
+#include <lib/io.h>
 
 void pic_init() {
     outb(0x20, 0x11);

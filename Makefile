@@ -1,5 +1,5 @@
 CC = "./cross-compiler/cross/bin/i386-elf-gcc"
-
+CFLAGS = -m32 -ffreestanding -g -c -I src/include
 default: run
 
 .PHONY: default build run clean kernel.o
@@ -8,16 +8,16 @@ boot.o: src/arch/x86/boot.asm
 	nasm -f elf32 -g src/arch/x86/boot.asm -o build/boot.o
 
 kernel.o: src/arch/x86/kernel.c src/arch/x86/drivers/vga.c src/arch/x86/gdt/gdt.c src/arch/x86/interrupts/idt.c src/arch/x86/pic.c
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/kernel.c -o build/kernel.o -nostdlib
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/drivers/vga.c -o build/vga.o -nostdlib
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/gdt/gdt.c -o build/gdt.o
+	$(CC) $(CFLAGS) src/arch/x86/kernel.c -o build/kernel.o -nostdlib
+	$(CC) $(CFLAGS) src/arch/x86/drivers/vga.c -o build/vga.o -nostdlib
+	$(CC) $(CFLAGS) src/arch/x86/gdt/gdt.c -o build/gdt.o
 	nasm -f elf32 -g src/arch/x86/gdt/gdt.asm -o build/gdt_asm.o
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/interrupts/idt.c -o build/idt.o
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/interrupts/isr.c -o build/isr.o
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/pic.c -o build/pic.o
+	$(CC) $(CFLAGS) src/arch/x86/interrupts/idt.c -o build/idt.o
+	$(CC) $(CFLAGS) src/arch/x86/interrupts/isr.c -o build/isr.o
+	$(CC) $(CFLAGS) src/arch/x86/pic.c -o build/pic.o
 	nasm -f elf32 -g src/arch/x86/interrupts/idt.asm -o build/idt_asm.o
 	nasm -f elf32 -g src/arch/x86/interrupts/interrupts.asm -o build/interrupt.o
-	$(CC) -m32 -ffreestanding -g -c src/arch/x86/userinput/keyboard.c -o build/keyboard.o
+	$(CC) $(CFLAGS) src/arch/x86/userinput/keyboard.c -o build/keyboard.o
 
 kernel.bin: boot.o kernel.o linker.ld
 	ld -m elf_i386 --nmagic --output=build/kernel.bin --script=linker.ld build/boot.o build/kernel.o build/vga.o build/gdt.o build/gdt_asm.o \

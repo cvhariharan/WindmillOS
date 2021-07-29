@@ -1,4 +1,4 @@
-#include "vga.h"
+#include <drivers/vga.h>
 
 char *vga_buffer = 0;
 int global_x = 0, global_y = 0;
