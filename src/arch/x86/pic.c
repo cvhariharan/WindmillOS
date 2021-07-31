@@ -12,7 +12,7 @@ void pic_init() {
     outb(0xA1, 0x01);
     
     outb(0x21, 0xfd);
-    outb(0xA1, 0xff);
+    outb(0xA1, 0xef);
 }
 
 void pic_ack(unsigned int interrupt) {

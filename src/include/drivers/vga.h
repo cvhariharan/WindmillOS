@@ -1,4 +1,4 @@
-#include "../lib/types.h"
+#include <lib/types.h>
 
 #ifndef VGA
 #define VGA
@@ -43,5 +43,7 @@ void vga_set_char(byte_t, byte_t, byte_t, byte_t);
 int vga_raw_write(word_t *);
 
 void vga_putchar(const char);
+
+void vga_putchar_color(const char, byte_t);
 
 #endif
